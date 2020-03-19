@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="java-first-project:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/java_first_project_jar</output-path>
+    <root id="archive" name="java-first-project.jar">
+      <element id="module-output" name="java-first-project" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/gson-2.8.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
