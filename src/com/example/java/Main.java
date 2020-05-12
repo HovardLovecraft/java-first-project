@@ -1,38 +1,55 @@
 package com.example.java;
 
-import com.classes.Person;
-import com.classes.Rectangle;
+import com.classes.people.Customer;
+import com.classes.tools.CustomerGenerator;
+import com.classes.people.CustomerList;
+import com.classes.tools.Sorter;
 import com.google.gson.Gson;
 
-/**
- * this is a Main class, all logic is here
- */
+import java.util.*;
+
 
 public class Main {
 
-    public static void main (String [ ] args){
+    public static void main (String [] args) {
 
-        /**
-         * This is a main method it calls other classes
-         */
-
-        Rectangle square = new Rectangle(5.5, 5.5);
-        System.out.println(square.getArea());
-
-        Person person = new Person("Ivan", "Kuznetsov", 31);
-        System.out.println(person.getAge());
         Gson gson = new Gson();
-        String personJson = gson.toJson(person);
-        System.out.println(personJson);
+        Customer[] customers = CustomerGenerator.generateCustomersArrayWithIDs();
+        customers[0].setFirstName("").setLastName("");
+        CustomerList list = new CustomerList();
 
-        String[] colors = new String[]{"Red", "Green", "Blue"};
-        for (int i = 0; i < colors.length; i++){
-            System.out.println("the color is " + colors[i]);
-        }
 
-        String colorsJson = gson.toJson(colors);
-        System.out.println(colorsJson);
+        list.addCustomer( "Ivan", "Kuznetsov", "Kyiv",        1234123412341234L, "IBAN0001");
+        list.addCustomer( "Ira", "Kuznetsova", "Kyiv",        6789987656462323L, "IBAN0002");
+        list.addCustomer( "Victor", "Rosta", "Moscow",        4444222211116666L, "IBAN0003");
+        list.addCustomer( "Peter", "Marek", "Warsaw",         9999888877776666L, "IBAN0004");
+        list.addCustomer( "Nicholas", "Barker", "Oslo",       9876543212345678L, "IBAN0004");
+        list.addCustomer( "Jurgen", "Klinsman", "Munich",     1234567898765432L, "IBAN0006");
+        list.addCustomer( "John", "Doe", "Unknown",           6543654334563456L, "IBAN0007");
+        list.addCustomer( "Brad", "Pitt", "Los Angeles",      7654765434563456L, "IBAN0008");
+        list.addCustomer( "Sub", "Zero", "Tokyo",             2223334444555566L, "IBAN0009");
+        list.addCustomer( "Chris", "Redfield", "Racoon City", 2221130987654321L, "IBAN0010");
 
+        String customersJson = gson.toJson(list.getList());
+        System.out.println(customersJson);
+
+        System.out.println(list.getList());
+
+//        System.out.println("Customer Name Sorting");
+//        List<Customer> sortedList = list.getSortedList(Sorter.customerNameComparator);
+
+        System.out.println("Ranged list by credit card number");
+        List<Customer> rangedList = list.getCustomersByCreditCardRange(4000000000000000L, 8000000000000000L);
+        System.out.println(rangedList);
+
+
+
+//        for (Customer str : sortedList){
+//            System.out.println(str);
+//        }
+
+
+//        System.out.println(Sorter.getReversedString("ivan".toCharArray()));
+        Sorter.printMatrix();
     }
-
 }
