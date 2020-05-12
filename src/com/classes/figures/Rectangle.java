@@ -1,19 +1,11 @@
-package com.classes;
+package com.classes.figures;
 
-/**
- * Rectangle with it's methods and constructor
- */
 
 public class Rectangle {
     private double lengthSideA;
     private double widthSideB;
     private double area;
 
-    /**
-     *
-     * @param lengthSideA
-     * @param widthSideB
-     */
 
     public Rectangle(double lengthSideA, double widthSideB) {
         this.lengthSideA = lengthSideA;
@@ -45,10 +37,6 @@ public class Rectangle {
         this.area = getWidthSideB() * getLengthSideA();
     }
 
-    /**
-     *
-     * @return
-     */
 
     @Override
     public String toString() {
